@@ -1,0 +1,76 @@
+---
+output: rmarkdown::github_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r pkg-knitr-opts, include=FALSE}
+hrbrpkghelpr::global_opts()
+```
+
+```{r badges, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::stinking_badges(repo_status = "WIP")
+```
+
+```{r description, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::yank_title_and_description()
+```
+
+## What's Inside The Tin
+
+The following functions are implemented:
+
+```{r ingredients, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::describe_ingredients()
+```
+
+## Installation
+
+```{r install-ex, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::install_block()
+```
+
+## Usage
+
+```{r use-1}
+library(rJava)
+library(graphstreamjars)
+
+packageVersion("graphstreamjars")
+```
+
+```{r use-2}
+library(graphstreamjars)
+
+SingleGraph <- J("org.graphstream.graph.implementations.SingleGraph")
+
+(graph <- .jnew(SingleGraph, "Tutorial 1"))
+
+graph$addNode("A")
+graph$addNode("B")
+graph$addNode("C")
+graph$addEdge("AB", "A", "B")
+graph$addEdge("BC", "B", "C")
+graph$addEdge("CA", "C", "A")
+
+graph$setStrict(FALSE)
+graph$setAutoCreate(TRUE)
+graph$addEdge("AB", "A", "B")
+graph$addEdge("BC", "B", "C")
+graph$addEdge("CA", "C", "A")
+
+(A <- graph$getNode("A"))
+
+(AB <- graph$getEdge("AB"))
+
+ni <- graph$getNodeIterator()
+
+while(ni$hasNext()) {
+  print(.jrcall(ni, "next"))
+}
+```
+
+## `graphstreamjars` Metrics
+
+```{r cloc, echo=FALSE}
+cloc::cloc_pkg_md()
+```
