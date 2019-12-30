@@ -29,6 +29,8 @@ The following functions are implemented:
 ## Installation
 
 ``` r
+install.packages("graphstreamjars", repos = "https://cinc.rud.is")
+# or
 remotes::install_git("https://git.rud.is/hrbrmstr/graphstreamjars.git")
 # or
 remotes::install_git("https://git.sr.ht/~hrbrmstr/graphstreamjars")
